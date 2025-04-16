@@ -23,7 +23,7 @@
             color: #fff;
             margin: 0;
             overflow-x: hidden;
-            font-size: 16px; /* Base font size for scaling */
+            font-size: 16px;
         }
 
         /* Navbar */
@@ -64,21 +64,28 @@
             border: 1px solid var(--primary);
             box-shadow: 0 0 15px rgba(0, 255, 136, 0.3);
             transition: box-shadow 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
         }
         .hero-card:hover {
             box-shadow: 0 0 25px rgba(0, 255, 136, 0.5);
         }
         .profile-img {
-            width: 100px;
-            height: 100px;
+            width: 150px;
+            height: 150px;
             object-fit: cover;
             border-radius: 50%;
             border: 2px solid var(--primary);
-            margin-bottom: 1rem;
             transition: transform 0.3s;
+            flex-shrink: 0;
         }
         .profile-img:hover {
             transform: translateY(-5px);
+        }
+        .hero-content {
+            text-align: left;
+            flex-grow: 1;
         }
         .hero-card h1 {
             font-size: 1.8rem;
@@ -441,6 +448,11 @@
             .hero-card {
                 padding: 1rem;
                 max-width: 95%;
+                flex-direction: column;
+                text-align: center;
+            }
+            .hero-content {
+                text-align: center;
             }
             .hero-card h1 {
                 font-size: 1.5rem;
@@ -452,8 +464,8 @@
                 font-size: 0.8rem;
             }
             .profile-img {
-                width: 80px;
-                height: 80px;
+                width: 120px;
+                height: 120px;
             }
             .section-padding {
                 padding: 1.5rem 0;
@@ -528,10 +540,12 @@
     <section class="hero-section">
         <div class="hero-card">
             <img src="./gian.JPG" class="profile-img" alt="Profile Image">
-            <h1>Hi, I’m Gian Accel V. Hernandez</h1>
-            <h3>Information Technology Student</h3>
-            <p class="lead">Aspiring Web Developer | Passionate About Tech | Always Learning</p>
-            <a href="#projects" class="btn btn-cta">View My Projects</a>
+            <div class="hero-content">
+                <h1>Hi, I’m Gian Accel V. Hernandez</h1>
+                <h3>Information Technology Student</h3>
+                <p class="lead">Aspiring Web Developer | Passionate About Tech | Always Learning</p>
+                <a href="#projects" class="btn btn-cta">View My Projects</a>
+            </div>
         </div>
     </section>
 
