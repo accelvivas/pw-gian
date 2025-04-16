@@ -1,42 +1,399 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-    <head>
-        <title>Title</title>
-        <!-- Required meta tags -->
-        <meta charset="utf-8" />
-        <meta
-            name="viewport"
-            content="width=device-width, initial-scale=1, shrink-to-fit=no"
-        />
+<head>
+    <title>Gian Accel V. Hernandez - Portfolio</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 
-        <!-- Bootstrap CSS v5.2.1 -->
-        <link
-            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
-            rel="stylesheet"
-            integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
-            crossorigin="anonymous"
-        />
-    </head>
+    <!-- Bootstrap CSS v5.3.2 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
-    <body>
-        <header>
-            <!-- place navbar here -->
-        </header>
-        <main></main>
-        <footer>
-            <!-- place footer here -->
-        </footer>
-        <!-- Bootstrap JavaScript Libraries -->
-        <script
-            src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
-            integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
-            crossorigin="anonymous"
-        ></script>
+    <style>
+        :root {
+            --primary: #00ff88; /* Neon Green */
+            --secondary: #1a1a1a; /* Dark Black */
+            --accent: #00cc6e; /* Darker Green */
+        }
 
-        <script
-            src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
-            integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
-            crossorigin="anonymous"
-        ></script>
-    </body>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: url('https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') no-repeat center center fixed;
+            background-size: cover;
+            color: #fff;
+            margin: 0;
+            overflow-x: hidden;
+        }
+
+        /* Navbar */
+        .navbar {
+            background: rgba(26, 26, 26, 0.95);
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .navbar-brand, .nav-link {
+            color: #fff !important;
+            transition: color 0.3s;
+        }
+        .nav-link:hover {
+            color: var(--primary) !important;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            padding: 120px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            z-index: 0;
+        }
+        .profile-img {
+            width: 220px;
+            height: 220px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 6px solid #fff;
+            box-shadow: 0 0 20px rgba(0, 255, 136, 0.5);
+            transition: transform 0.5s;
+        }
+        .profile-img:hover {
+            transform: scale(1.1);
+        }
+        .hero-section h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        .hero-section p.lead {
+            font-size: 1.5rem;
+            color: #e0e0e0;
+        }
+        .btn-cta {
+            background: var(--primary);
+            color: #000;
+            font-weight: 600;
+            padding: 12px 30px;
+            border-radius: 50px;
+            transition: background 0.3s, transform 0.3s;
+        }
+        .btn-cta:hover {
+            background: var(--accent);
+            transform: translateY(-3px);
+        }
+
+        /* Section Styling */
+        .section-padding {
+            padding: 80px 0;
+            background: rgba(0, 0, 0, 0.85);
+            border-radius: 15px;
+            margin: 20px auto;
+            max-width: 1200px;
+        }
+        .section-padding h2 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            text-align: center;
+            margin-bottom: 40px;
+            position: relative;
+        }
+        .section-padding h2::after {
+            content: '';
+            width: 100px;
+            height: 4px;
+            background: var(--primary);
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        /* Project Cards */
+        .project-card {
+            background: var(--secondary);
+            border: none;
+            border-radius: 15px;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 25px rgba(0, 255, 136, 0.3);
+        }
+        .project-card .card-body {
+            padding: 20px;
+            color: #e0e0e0;
+        }
+        .project-card h5 {
+            color: var(--primary);
+        }
+        .project-card .btn-primary {
+            background: var(--primary);
+            border: none;
+            border-radius: 50px;
+            padding: 10px 20px;
+            color: #000;
+        }
+        .project-card .btn-primary:hover {
+            background: var(--accent);
+        }
+
+        /* Skills, Hobbies, and Games */
+        .skills-list, .hobbies-list, .games-list {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .skills-list li, .hobbies-list li, .games-list li {
+            background: var(--primary);
+            color: #000;
+            padding: 10px 20px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            transition: background 0.3s;
+        }
+        .skills-list li:hover, .hobbies-list li:hover, .games-list li:hover {
+            background: var(--accent);
+        }
+
+        /* Contact */
+        #contact {
+            background: var(--secondary);
+            padding: 80px 0;
+        }
+        #contact .container {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid var(--primary);
+            border-radius: 15px;
+            padding: 40px;
+        }
+        #contact .form-control {
+            background: var(--secondary);
+            border: 1px solid var(--primary);
+            color: #fff;
+        }
+        #contact .form-control:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 10px rgba(0, 255, 136, 0.5);
+        }
+        #contact .btn-primary {
+            background: var(--primary);
+            color: #000;
+            border-radius: 50px;
+            padding: 12px 0;
+        }
+        #contact .btn-primary:hover {
+            background: var(--accent);
+        }
+
+        /* Social Links */
+        .social-links {
+            background: var(--secondary);
+            padding: 20px 0;
+        }
+        .social-links a {
+            color: #fff;
+            transition: color 0.3s, transform 0.3s;
+        }
+        .social-links a:hover {
+            color: var(--primary);
+            transform: scale(1.2);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--secondary);
+            padding: 20px 0;
+            font-size: 0.9rem;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .section-padding, .hero-section, #contact {
+            animation: fadeIn 1s ease-out;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand" href="#">Gian Accel</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Homepage -->
+    <section class="hero-section">
+        <div class="container position-relative">
+            <img src="./gian.JPG" class="profile-img mb-4">
+            <h1>Hi, I’m Gian Accel V. Hernandez</h1>
+            <h3>Information Technology Student</h3>
+            <p class="lead mt-3">Aspiring Web Developer | Passionate About Tech | Always Learning</p>
+            <a href="#projects" class="btn btn-cta btn-lg mt-3">View My Projects</a>
+        </div>
+    </section>
+
+    <!-- About Me -->
+    <section id="about" class="section-padding">
+        <div class="container">
+            <h2>About Me</h2>
+            <div class="row">
+                <div class="col-md-8 mx-auto text-center">
+                    <p>I'm a 2nd-year BSIT student at NU Lipa, diving deep into the world of coding and web development. My passion lies in crafting seamless, user-friendly websites and tackling challenging projects. When I'm not coding, you can find me battling it out in Mobile Legends, building epic worlds in Roblox, strumming my guitar, or shooting hoops on the basketball court!</p>
+                    <p>My goal? To become a full-stack developer, building innovative solutions that make a difference.</p>
+                    <p><strong>Currently Learning:</strong> HTML, CSS, Bootstrap, Java, C++</p>
+                    <p><strong>Favorite Project:</strong> A dynamic portfolio website built with Bootstrap that showcases my journey.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects" class="section-padding">
+        <div class="container">
+            <h2>Projects</h2>
+            <div class="row">
+                <div class="col-md-6 mb-4">
+                    <div class="card project-card">
+                        <div class="card-body">
+                            <h5 class="card-title">Personal Portfolio</h5>
+                            <p class="card-text">Example of my very first personal website.</p>
+                            <p><strong>Tech:</strong> HTML, CSS, Bootstrap</p>
+                            <a href="https://accelvivas.github.io/bootstrap5/components#projects" class="btn btn-primary">View on GitHub</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-4">
+                    <div class="card project-card">
+                        <div class="card-body">
+                            <h5 class="card-title">Essentials for HTML, CSS, Bootstrap</h5>
+                            <p class="card-text">Examples of needed in HTML, CSS and Bootstrap</p>
+                            <p><strong>Tech:</strong> HTML, CSS, Bootstrap</p>
+                            <a href="https://accelvivas.github.io/bootstrap5/" class="btn btn-primary">View on GitHub</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills -->
+    <section id="skills" class="section-padding">
+        <div class="container">
+            <h2>Skills & Interests</h2>
+            <div class="row">
+                <div class="col-md-6">
+                    <h4>Programming</h4>
+                    <ul class="skills-list">
+                        <li>Java</li>
+                        <li>SQL</li>
+                        <li>C++</li>
+                    </ul>
+                </div>
+                <div class="col-md-6">
+                    <h4>Web Development</h4>
+                    <ul class="skills-list">
+                        <li>HTML</li>
+                        <li>CSS</li>
+                        <li>Bootstrap</li>
+                    </ul>
+                </div>
+                <div class="col-md-12 mt-4">
+                    <h4>Tools</h4>
+                    <ul class="skills-list">
+                        <li>VS Code</li>
+                        <li>GitHub</li>
+                        <li>Canva</li>
+                    </ul>
+                </div>
+                <div class="col-md-12 mt-4">
+                    <h4>Hobbies</h4>
+                    <ul class="hobbies-list">
+                        <li>Guitar</li>
+                        <li>Basketball</li>
+                    </ul>
+                </div>
+                <div class="col-md-12 mt-4">
+                    <h4>Favorite Games</h4>
+                    <ul class="games-list">
+                        <li>Mobile Legends</li>
+                        <li>Roblox</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <div id="contact" class="container-fluid p-5">
+        <div class="container border border-1 rounded-3 p-4">
+            <h2 class="text-center mb-4">Contact Me</h2>
+            <form>
+                <div class="mb-1">
+                    <label for="name" class="form-label">Name</label>
+                    <input type="text" class="form-control" id="name" placeholder="Enter your name" required>
+                </div>
+                <div class="mb-1">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" class="form-control" id="email" placeholder="Enter your email" required>
+                </div>
+                <div class="mb-1">
+                    <label for="message" class="form-label">Message</label>
+                    <textarea type="message" class="form-control" rows="3" id="message" placeholder="Enter your message" required></textarea>
+                </div>
+                <button class="btn btn-primary mt-4 d-flex justify-content-center w-100">Send</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Social Links -->
+    <div class="container-fluid social-links py-3">
+        <div class="container text-center">
+            <div class="d-flex justify-content-center gap-4">
+                <a href="https://facebook.com/AccelHrnndz"><i class="bi bi-facebook fs-2"></i></a>
+                <a href="https://instagram.com/accelvivas_"><i class="bi bi-instagram fs-2"></i></a>
+                <a href="https://github.com/accelvivas"><i class="bi bi-github fs-2"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="text-white text-center py-3">
+        <p class="mb-0">© 2025 Gian Accel V. Hernandez. Built with <i class="bi bi-heart-fill text-danger"></i> and Code.</p>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
+</body>
 </html>
