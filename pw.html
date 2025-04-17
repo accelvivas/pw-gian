@@ -54,7 +54,7 @@
             text-align: center;
         }
         .navbar-toggler-icon {
-            background-image: url("data:image/svg+xml,%3c(svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255,255,255, 1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255,255,255, 1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
         }
 
         /* Hero Section */
@@ -234,17 +234,17 @@
             transform: translateY(-2px);
         }
 
-        /* Skills and Hobbies List Styling */
-        .skills-list li, .hobbies-list li {
+        /* Skills, Hobbies, Games List Styling */
+        .skills-list li, .hobbies-list li, .games-list li {
             position: relative;
-            width: 150px;
-            height: 150px;
+            width: 96px;
+            height: 96px;
             overflow: hidden;
             border-radius: 15px;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
             transition: transform 0.3s, box-shadow 0.3s;
         }
-        .skills-list li:hover {
+        .skills-list li:hover, .games-list li:hover {
             transform: scale(1.1) rotate(3deg);
             box-shadow: 0 8px 20px rgba(107, 33, 168, 0.6);
         }
@@ -252,16 +252,16 @@
             transform: scale(1.1) rotate(-3deg);
             box-shadow: 0 8px 20px rgba(107, 33, 168, 0.6);
         }
-        .skills-list img, .hobbies-list img {
+        .skills-list img, .hobbies-list img, .games-list img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             transition: filter 0.3s;
         }
-        .skills-list li:hover img, .hobbies-list li:hover img {
+        .skills-list li:hover img, .hobbies-list li:hover img, .games-list li:hover img {
             filter: brightness(0.7);
         }
-        .skills-list .overlay, .hobbies-list .overlay {
+        .skills-list .overlay, .hobbies-list .overlay, .games-list .overlay {
             position: absolute;
             top: 0;
             left: 0;
@@ -274,17 +274,17 @@
             opacity: 0;
             transition: opacity 0.3s;
         }
-        .skills-list li:hover .overlay, .hobbies-list li:hover .overlay {
+        .skills-list li:hover .overlay, .hobbies-list li:hover .overlay, .games-list li:hover .overlay {
             opacity: 1;
         }
-        .skills-list .overlay span, .hobbies-list .overlay span {
+        .skills-list .overlay span, .hobbies-list .overlay span, .games-list .overlay span {
             color: #fff;
-            font-size: 1rem;
+            font-size: 0.8rem;
             font-weight: 600;
             text-align: center;
             text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
         }
-        .skills-list li::after, .hobbies-list li::after {
+        .skills-list li::after, .hobbies-list li::after, .games-list li::after {
             content: '';
             position: absolute;
             top: 50%;
@@ -297,88 +297,17 @@
             transition: width 0.5s, height 0.5s;
             pointer-events: none;
         }
-        .skills-list li:hover::after, .hobbies-list li:hover::after {
-            width: 200px;
-            height: 200px;
-            opacity: 0;
-        }
-
-        /* Games List Styling */
-        .games-list li {
-            position: relative;
-            width: 150px;
-            height: 150px;
-            overflow: hidden;
-            border-radius: 15px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-        .games-list li:hover {
-            transform: scale(1.1) rotate(3deg);
-            box-shadow: 0 8px 20px rgba(107, 33, 168, 0.6);
-        }
-        .games-list img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: filter 0.3s;
-        }
-        .games-list li:hover img {
-            filter: brightness(0.7);
-        }
-        .games-list .overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(107, 33, 168, 0.5);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            transition: opacity 0.3s;
-        }
-        .games-list li:hover .overlay {
-            opacity: 1;
-        }
-        .games-list .overlay span {
-            color: #fff;
-            font-size: 1rem;
-            font-weight: 600;
-            text-align: center;
-            text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
-        }
-        .games-list li::after {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 0;
-            height: 0;
-            background: rgba(255, 255, 255, 0.3);
-            border-radius: 50%;
-            transform: translate(-50%, -50%);
-            transition: width 0.5s, height 0.5s;
-            pointer-events: none;
-        }
-        .games-list li:hover::after {
-            width: 200px;
-            height: 200px;
+        .skills-list li:hover::after, .hobbies-list li:hover::after, .games-list li:hover::after {
+            width: 128px;
+            height: 128px;
             opacity: 0;
         }
 
         /* Certifications List Styling */
-        .certifications-list {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1.5rem;
-            justify-content: flex-start;
-        }
         .certifications-list li {
             position: relative;
-            width: 200px;
-            height: 150px;
+            width: 128px;
+            height: 96px;
             overflow: hidden;
             border-radius: 15px;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
@@ -415,7 +344,7 @@
         }
         .certifications-list .overlay span {
             color: #fff;
-            font-size: 0.9rem;
+            font-size: 0.7rem;
             font-weight: 600;
             text-align: center;
             text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
@@ -434,8 +363,8 @@
             pointer-events: none;
         }
         .certifications-list li:hover::after {
-            width: 250px;
-            height: 250px;
+            width: 160px;
+            height: 160px;
             opacity: 0;
         }
 
@@ -765,15 +694,15 @@
                 font-size: 1.1rem;
             }
             .skills-list li, .hobbies-list li, .games-list li {
-                width: 120px;
-                height: 120px;
+                width: 77px;
+                height: 77px;
             }
             .certifications-list li {
-                width: 160px;
-                height: 120px;
+                width: 102px;
+                height: 77px;
             }
             .skills-list .overlay span, .hobbies-list .overlay span, .games-list .overlay span, .certifications-list .overlay span {
-                font-size: 0.8rem;
+                font-size: 0.6rem;
             }
         }
     </style>
