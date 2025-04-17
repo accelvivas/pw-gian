@@ -175,6 +175,83 @@
             color: #D1D5DB;
         }
 
+        /* Education Section */
+        .education-timeline {
+            position: relative;
+            padding: 1.5rem 0;
+        }
+        .education-timeline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 1.5rem;
+            width: 4px;
+            background: var(--primary);
+            border-radius: 2px;
+        }
+        .education-item {
+            position: relative;
+            margin: 1.5rem 0;
+            padding-left: 3.5rem;
+            text-align: left;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        .education-item .education-content {
+            background: linear-gradient(145deg, var(--secondary), rgba(107, 33, 168, 0.1));
+            padding: 1.5rem;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s, box-shadow 0.3s;
+            flex-grow: 1;
+        }
+        .education-item .education-content:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(107, 33, 168, 0.4);
+        }
+        .education-item .education-icon {
+            position: absolute;
+            top: 50%;
+            left: 0.5rem;
+            width: 32px;
+            height: 32px;
+            background: var(--primary);
+            color: #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            transform: translateY(-50%);
+            box-shadow: 0 0 10px rgba(107, 33, 168, 0.5);
+        }
+        .education-item h4 {
+            color: var(--primary);
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+        .education-item p {
+            color: #D1D5DB;
+            font-size: 0.95rem;
+            margin: 0;
+        }
+        .education-item img {
+            width: 96px;
+            height: 96px;
+            object-fit: contain;
+            border-radius: 10px;
+            background: rgba(10, 10, 10, 0.7);
+            padding: 0.25rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .education-item img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 15px rgba(107, 33, 168, 0.5);
+        }
+
         /* Project Cards */
         .project-card {
             background: linear-gradient(145deg, var(--secondary), rgba(107, 33, 168, 0.1));
@@ -681,17 +758,25 @@
             .about-card p {
                 font-size: 0.9rem;
             }
-            .timeline::before {
+            .timeline::before, .education-timeline::before {
                 left: 1rem;
             }
-            .timeline-item {
+            .timeline-item, .education-item {
                 padding-left: 3rem;
             }
-            .timeline-item .timeline-icon {
+            .timeline-item .timeline-icon, .education-item .education-icon {
                 left: 0.25rem;
                 width: 28px;
                 height: 28px;
                 font-size: 1.1rem;
+            }
+            .education-item {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .education-item img {
+                width: 77px;
+                height: 77px;
             }
             .skills-list li, .hobbies-list li, .games-list li {
                 width: 77px;
@@ -718,6 +803,7 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#education">Education</a></li>
                     <li class="nav-item"><a class="nav-link" href="#journey">Journey</a></li>
                     <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
                     <li class="nav-item"><a class="nav-link" href="#skills">Skills & Interests</a></li>
@@ -749,6 +835,39 @@
                 <p>I'm a 2nd-year BSIT student at NU Lipa, diving deep into the world of coding and web development. My passion lies in crafting seamless, user-friendly websites and tackling challenging projects. When I'm not coding, you can find me battling it out in Mobile Legends, building epic worlds in Roblox, strumming my guitar, or shooting hoops on the basketball court!</p>
                 <p><strong>Currently Learning:</strong> HTML, CSS, Bootstrap, Java, C++, SQL</p>
                 <p><strong>Favorite Project:</strong> A dynamic portfolio website built with Bootstrap that showcases my journey.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education -->
+    <section id="education" class="section-padding">
+        <div class="container">
+            <h2>My Education</h2>
+            <div class="education-timeline">
+                <div class="education-item">
+                    <div class="education-icon"><i class="fas fa-graduation-cap"></i></div>
+                    <div class="education-content">
+                        <h4>Primary School</h4>
+                        <p>2011-2016: Montessori East Tanauan and Canossa Academy Lipa</p>
+                    </div>
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ5cD30hRhmZtHL_3U-pIsMQe3FUKeML3f7yA&s" alt="Montessori East Tanauan">
+                </div>
+                <div class="education-item">
+                    <div class="education-icon"><i class="fas fa-graduation-cap"></i></div>
+                    <div class="education-content">
+                        <h4>Secondary School</h4>
+                        <p>2017-2022: Canossa Academy Lipa</p>
+                    </div>
+                    <img src="https://upload.wikimedia.org/wikipedia/en/7/7f/Canossa_Academy_Lipa_Logo.png" alt="Canossa Academy Lipa">
+                </div>
+                <div class="education-item">
+                    <div class="education-icon"><i class="fas fa-graduation-cap"></i></div>
+                    <div class="education-content">
+                        <h4>Tertiary School</h4>
+                        <p>2023-Present: National University Lipa</p>
+                    </div>
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQpckyoZD_SeM8Eb7igtasNa12Gm3zauGAlBA&s" alt="National University Lipa">
+                </div>
             </div>
         </div>
     </section>
