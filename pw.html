@@ -4,6 +4,9 @@
     <title>Accel's Personal Website</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, maximum-scale=1, user-scalable=no" />
+    <meta name="description" content="Gian Accel V. Hernandez's personal portfolio showcasing web development projects and IT journey.">
+    <meta name="keywords" content="web development, portfolio, IT student, Bootstrap, Java, HTML, CSS, SQL">
+    <meta name="author" content="Gian Accel V. Hernandez">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" />
@@ -399,6 +402,15 @@
             gap: 1.5rem;
             justify-content: flex-start;
         }
+        .skills-list li img {
+            width: 48px;
+            height: 48px;
+            object-fit: contain;
+            transition: transform 0.3s;
+        }
+        .skills-list li img:hover {
+            transform: scale(1.1);
+        }
         .achievements-list li {
             background: var(--primary);
             color: #fff;
@@ -412,73 +424,73 @@
             transform: translateY(-2px);
         }
 
-        /* Skills, Hobbies, Games List Styling */
-        .skills-list li, .hobbies-list li, .games-list li {
+        /* Hobbies and Games Gallery */
+        .hobbies-list, .games-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 1rem;
+        }
+        .gallery-item {
             position: relative;
-            width: 96px;
-            height: 96px;
+            width: 100%;
+            height: 120px;
             overflow: hidden;
-            border-radius: 15px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
             transition: transform 0.3s, box-shadow 0.3s;
         }
-        .skills-list li:hover, .games-list li:hover {
-            transform: scale(1.1) rotate(3deg);
-            box-shadow: 0 8px 20px rgba(107, 33, 168, 0.6);
+        .gallery-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 15px rgba(107, 33, 168, 0.6);
         }
-        .hobbies-list li:hover {
-            transform: scale(1.1) rotate(-3deg);
-            box-shadow: 0 8px 20px rgba(107, 33, 168, 0.6);
-        }
-        .skills-list img, .hobbies-list img, .games-list img {
+        .gallery-item img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             transition: filter 0.3s;
         }
-        .skills-list li:hover img, .hobbies-list li:hover img, .games-list li:hover img {
+        .gallery-item:hover img {
             filter: brightness(0.7);
         }
-        .skills-list .overlay, .hobbies-list .overlay, .games-list .overlay {
+        .gallery-caption {
             position: absolute;
-            top: 0;
+            bottom: 0;
             left: 0;
             width: 100%;
-            height: 100%;
-            background: rgba(107, 33, 168, 0.5);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            transition: opacity 0.3s;
+            background: rgba(107, 33, 168, 0.8);
+            color: #fff;
+            padding: 0.4rem;
+            text-align: center;
+            transform: translateY(100%);
+            transition: transform 0.3s;
+            font-size: 0.75rem;
+            font-weight: 600;
         }
-        .skills-list li:hover .overlay, .hobbies-list li:hover .overlay, .games-list li:hover .overlay {
-            opacity: 1;
+        .gallery-item:hover .gallery-caption {
+            transform: translateY(0);
         }
-        .skills-list .overlay span, .hobbies-list .overlay span, .games-list .overlay span {
+
+        /* Skill Progress Bars */
+        .skills-progress .progress {
+            background: rgba(10, 10, 10, 0.8);
+            border: 1px solid var(--primary);
+            border-radius: 8px;
+            transition: box-shadow 0.3s;
+            height: 18px;
+        }
+        .skills-progress .progress:hover {
+            box-shadow: 0 0 8px rgba(107, 33, 168, 0.5);
+        }
+        .skills-progress .progress-bar {
             color: #fff;
             font-size: 0.8rem;
             font-weight: 600;
-            text-align: center;
-            text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
         }
-        .skills-list li::after, .hobbies-list li::after, .games-list li::after {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 0;
-            height: 0;
-            background: rgba(255, 255, 255, 0.3);
-            border-radius: 50%;
-            transform: translate(-50%, -50%);
-            transition: width 0.5s, height 0.5s;
-            pointer-events: none;
-        }
-        .skills-list li:hover::after, .hobbies-list li::after, .games-list li:hover::after {
-            width: 128px;
-            height: 128px;
-            opacity: 0;
+        .skills-progress label {
+            color: var(--primary);
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
         }
 
         /* Certifications List Styling */
@@ -692,41 +704,44 @@
                 font-size: 14px;
             }
             .hero-section {
-                padding: 2.5rem 0;
+                padding: 2rem 0;
             }
             .hero-card {
-                padding: 2rem;
+                padding: 1.5rem;
                 max-width: 95%;
                 flex-direction: column;
                 text-align: center;
-                gap: 1.5rem;
+                gap: 1rem;
             }
             .hero-content {
                 text-align: center;
             }
             .hero-card h1 {
-                font-size: 1.6rem;
+                font-size: 1.5rem;
             }
             .hero-card h3 {
-                font-size: 1.1rem;
+                font-size: 1rem;
             }
             .hero-card p.lead {
-                font-size: 0.9rem;
+                font-size: 0.85rem;
             }
             .profile-img {
-                width: 240px;
-                height: 240px;
+                width: 200px;
+                height: 200px;
             }
             .profile-img::before {
-                width: 260px;
-                height: 260px;
+                width: 220px;
+                height: 220px;
             }
             .section-padding {
-                padding: 2rem 0;
+                padding: 1.5rem 0;
                 margin: 0.5rem auto;
             }
             .section-padding h2 {
-                font-size: 1.5rem;
+                font-size: 1.4rem;
+            }
+            .section-padding h2::after {
+                width: 60px;
             }
             .journey-cards {
                 flex-direction: column;
@@ -734,7 +749,7 @@
             }
             .journey-card {
                 width: 100%;
-                max-width: 300px;
+                max-width: 280px;
                 padding: 1rem;
             }
             .project-card .card-body {
@@ -766,14 +781,14 @@
                 font-size: 0.7rem;
             }
             .tech-item i {
-                font-size: 2.2rem;
+                font-size: 2rem;
             }
             .tech-item .tooltip {
                 width: 100px;
                 font-size: 0.7rem;
             }
             .about-card p {
-                font-size: 0.9rem;
+                font-size: 0.85rem;
             }
             .education-timeline::before {
                 left: 1rem;
@@ -790,19 +805,35 @@
                 font-size: 1.1rem;
             }
             .education-item img {
-                width: 77px;
-                height: 77px;
+                width: 64px;
+                height: 64px;
             }
-            .skills-list li, .hobbies-list li, .games-list li {
-                width: 77px;
-                height: 77px;
+            .gallery-item {
+                height: 100px;
+            }
+            .gallery-caption {
+                font-size: 0.65rem;
+                padding: 0.3rem;
+            }
+            .hobbies-list, .games-list {
+                grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+                gap: 0.75rem;
             }
             .certifications-list li {
-                width: 102px;
-                height: 77px;
+                width: 96px;
+                height: 72px;
             }
-            .skills-list .overlay span, .hobbies-list .overlay span, .games-list .overlay span, .certifications-list .overlay span {
+            .certifications-list .overlay span {
                 font-size: 0.6rem;
+            }
+            .skills-progress .progress {
+                height: 14px;
+            }
+            .skills-progress .progress-bar {
+                font-size: 0.7rem;
+            }
+            .skills-progress label {
+                font-size: 0.85rem;
             }
         }
     </style>
@@ -832,7 +863,7 @@
     <!-- Homepage -->
     <section class="hero-section">
         <div class="hero-card">
-            <img src="./gian.JPG" class="profile-img" alt="Profile Image">
+            <img src="./gian.JPG" class="profile-img" alt="Profile Image of Gian Accel V. Hernandez">
             <div class="hero-content">
                 <h1>Hi, I’m Gian Accel V. Hernandez</h1>
                 <h3>Information Technology Student</h3>
@@ -865,7 +896,7 @@
                         <h4>Primary School</h4>
                         <p>2011-2016: Montessori East Tanauan and Canossa Academy Lipa</p>
                     </div>
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ5cD30hRhmZtHL_3U-pIsMQe3FUKeML3f7yA&s" alt="Montessori East Tanauan">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ5cD30hRhmZtHL_3U-pIsMQe3FUKeML3f7yA&s" alt="Montessori East Tanauan Logo">
                 </div>
                 <div class="education-item">
                     <div class="education-icon"><i class="fas fa-graduation-cap"></i></div>
@@ -873,7 +904,7 @@
                         <h4>Secondary School</h4>
                         <p>2017-2022: Canossa Academy Lipa</p>
                     </div>
-                    <img src="https://upload.wikimedia.org/wikipedia/en/7/7f/Canossa_Academy_Lipa_Logo.png" alt="Canossa Academy Lipa">
+                    <img src="https://upload.wikimedia.org/wikipedia/en/7/7f/Canossa_Academy_Lipa_Logo.png" alt="Canossa Academy Lipa Logo">
                 </div>
                 <div class="education-item">
                     <div class="education-icon"><i class="fas fa-graduation-cap"></i></div>
@@ -881,7 +912,7 @@
                         <h4>Tertiary School</h4>
                         <p>2023-Present: National University Lipa</p>
                     </div>
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQpckyoZD_SeM8Eb7igtasNa12Gm3zauGAlBA&s" alt="National University Lipa">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:9GcQpckyoZD_SeM8Eb7igtasNa12Gm3zauGAlBA&s" alt="National University Lipa Logo">
                 </div>
             </div>
         </div>
@@ -975,51 +1006,63 @@
             <div class="row">
                 <div class="col-12 mb-3">
                     <h4>Programming</h4>
-                    <ul class="skills-list">
-                        <li>
-                            <img src="https://logos-world.net/wp-content/uploads/2022/07/Java-Logo.png" alt="Java">
-                            <div class="overlay"><span>Java</span></div>
-                        </li>
-                        <li>
-                            <img src="https://optim.tildacdn.one/tild6238-3035-4335-a333-306335373139/-/resize/824x/-/format/webp/IMG_3349.jpg.webp" alt="SQL">
-                            <div class="overlay"><span>SQL</span></div>
-                        </li>
-                        <li>
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/ISO_C%2B%2B_Logo.svg/1200px-ISO_C%2B%2B_Logo.svg.png" alt="C++">
-                            <div class="overlay"><span>C++</span></div>
-                        </li>
-                    </ul>
+                    <div class="skills-progress">
+                        <div class="mb-3">
+                            <label class="d-block">Java</label>
+                            <div class="progress">
+                                <div class="progress-bar" style="width: 30%; background: linear-gradient(90deg, var(--primary), var(--accent));" role="progressbar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" aria-label="Java: 30%">30%</div>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="d-block">SQL</label>
+                            <div class="progress">
+                                <div class="progress-bar" style="width: 50%; background: linear-gradient(90deg, var(--primary), var(--accent));" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" aria-label="SQL: 50%">50%</div>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="d-block">C++</label>
+                            <div class="progress">
+                                <div class="progress-bar" style="width: 20%; background: linear-gradient(90deg, var(--primary), var(--accent));" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" aria-label="C++: 20%">20%</div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div class="col-12 mb-3">
                     <h4>Web Development</h4>
-                    <ul class="skills-list">
-                        <li>
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/HTML5_logo_and_wordmark.svg/800px-HTML5_logo_and_wordmark.svg.png" alt="HTML">
-                            <div class="overlay"><span>HTML</span></div>
-                        </li>
-                        <li>
-                            <img src="https://images.tpointtech.com/csspages/images/css-tutorial.png" alt="CSS">
-                            <div class="overlay"><span>CSS</span></div>
-                        </li>
-                        <li>
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Bootstrap_logo.svg/1200px-Bootstrap_logo.svg.png" alt="Bootstrap">
-                            <div class="overlay"><span>Bootstrap</span></div>
-                        </li>
-                    </ul>
+                    <div class="skills-progress">
+                        <div class="mb-3">
+                            <label class="d-block">HTML</label>
+                            <div class="progress">
+                                <div class="progress-bar" style="width: 80%; background: linear-gradient(90deg, var(--primary), var(--accent));" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" aria-label="HTML: 80%">80%</div>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="d-block">CSS</label>
+                            <div class="progress">
+                                <div class="progress-bar" style="width: 70%; background: linear-gradient(90deg, var(--primary), var(--accent));" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" aria-label="CSS: 70%">70%</div>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="d-block">Bootstrap</label>
+                            <div class="progress">
+                                <div class="progress-bar" style="width: 80%; background: linear-gradient(90deg, var(--primary), var(--accent));" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" aria-label="Bootstrap: 80%">80%</div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div class="col-12 mb-3">
                     <h4>Tools</h4>
-                    <ul class="skills-list">
+                    <ul class="certifications-list">
                         <li>
-                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZ6NCxPLGi_MIQmnA7DwXINCdm5vHiGUkygA&s" alt="VS Code">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Visual_Studio_Code_1.35_icon.svg/2048px-Visual_Studio_Code_1.35_icon.svg.png" alt="VS Code Logo">
                             <div class="overlay"><span>VS Code</span></div>
                         </li>
                         <li>
-                            <img src="https://avatars1.githubusercontent.com/u/9919?v=4" alt="GitHub">
-                            <div class="overlay"><span>GitHub</span></div>
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Git_icon.svg/2048px-Git_icon.svg.png" alt="Git Logo">
+                            <div class="overlay"><span>Git</span></div>
                         </li>
                         <li>
-                            <img src="https://images-eds-ssl.xboxlive.com/image?url=4rt9.lXDC4H_93laV1_eHHFT949fUipzkiFOBH3fAiZZUCdYojwUyX2aTonS1aIwMrx6NUIsHfUHSLzjGJFxxo4K81Ei7WzcnqEk8W.MgwadpHjl76SlQnWKc4OkaILTy7aDmpraBC2vB.Q_eb6EavJPyLEBEEqc.BSkZzu5Vng-&format=source" alt="Canva">
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQNcwtKecyjR-Wz57ArpQSVDU3vb6uOcLS5KQ&s">
                             <div class="overlay"><span>Canva</span></div>
                         </li>
                     </ul>
@@ -1027,26 +1070,26 @@
                 <div class="col-12 mb-3">
                     <h4>Hobbies</h4>
                     <ul class="hobbies-list">
-                        <li>
-                            <img src="https://cdn.ustatik.com/storage/marketing/images/d/dbe1cf59ae7fdf9dab827e754b895ce83c031737.png@380" alt="Guitar">
-                            <div class="overlay"><span>Guitar</span></div>
+                        <li class="gallery-item">
+                            <img src="https://static.wixstatic.com/media/7b3597_249cec3207094999b29792967654ef3a~mv2.jpg/v1/fill/w_1000,h_622,al_c,q_85,usm_0.66_1.00_0.01/7b3597_249cec3207094999b29792967654ef3a~mv2.jpg" alt="Playing Guitar">
+                            <div class="gallery-caption"><span>Guitar</span></div>
                         </li>
-                        <li>
-                            <img src="https://www.rockstaracademy.com/lib/images/news/basketball.jpeg" alt="Basketball">
-                            <div class="overlay"><span>Basketball</span></div>
+                        <li class="gallery-item">
+                            <img src="https://images.unsplash.com/photo-1546519638-68e109498ffc?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YmFza2V0YmFsbHxlbnwwfHwwfHx8MA%3D%3D" alt="Basketball Game">
+                            <div class="gallery-caption"><span>Basketball</span></div>
                         </li>
                     </ul>
                 </div>
                 <div class="col-12">
                     <h4>Favorite Games</h4>
                     <ul class="games-list">
-                        <li>
-                            <img src="https://www.pockettactics.com/wp-content/sites/pockettactics/2025/01/mobile-legends-codes.jpg" alt="Mobile Legends">
-                            <div class="overlay"><span>Mobile Legends</span></div>
+                        <li class="gallery-item">
+                            <img src="https://upload.wikimedia.org/wikipedia/en/a/a0/Mobile_Legends_Bang_Bang_2025_logo.png" alt="Mobile Legends Gameplay">
+                            <div class="gallery-caption"><span>Mobile Legends: Bang Bang</span></div>
                         </li>
-                        <li>
-                            <img src="https://images.rbxcdn.com/d66ae37d46e00a1ecacfe9531986690a.jpg" alt="Roblox">
-                            <div class="overlay"><span>Roblox</span></div>
+                        <li class="gallery-item">
+                            <img src="https://platform.theverge.com/wp-content/uploads/sites/2/chorus/uploads/chorus_asset/file/22544249/Showcase_Filmstrip_1920x1080.png?quality=90&strip=all&crop=0,0,100,100" alt="Roblox Creation">
+                            <div class="gallery-caption"><span>Roblox</span></div>
                         </li>
                     </ul>
                 </div>
@@ -1063,7 +1106,7 @@
                     <h4>Certifications</h4>
                     <ul class="certifications-list">
                         <li>
-                            <img src="https://images.credly.com/images/ea6af0e3-ab84-4ba4-a48c-2d4cad3f64c6/twitter_thumb_201604_IC3_GS5_Digital_Literacy-01.png" alt="IC3 Digital Literacy">
+                            <img src="https://images.credly.com/images/ea6af0e3-ab84-4ba4-a48c-2d4cad3f64c6/twitter_thumb_201604_IC3_GS5_Digital_Literacy-01.png" alt="IC3 Digital Literacy Certification">
                             <div class="overlay"><span>IC3 Digital Literacy</span></div>
                         </li>
                     </ul>
@@ -1071,7 +1114,7 @@
                 <div class="col-12">
                     <h4>Achievements</h4>
                     <ul class="achievements-list">
-                        <li>Dean's Lister, 1st to 3rd Term, First Year</li>
+                        <li>Dean's Lister: 1st Year, 1st to 3rd Term</li>
                     </ul>
                 </div>
             </div>
@@ -1079,44 +1122,42 @@
     </section>
 
     <!-- Contact -->
-    <div id="contact" class="container-fluid">
-        <div class="container section-padding">
-            <h2 class="text-center mb-4">Contact Me</h2>
-            <div class="mb-3">
-                <label for="name" class="form-label">Name</label>
-                <input type="text" class="form-control" id="name" placeholder="Enter your name" required>
-            </div>
-            <div class="mb-3">
-                <label for="email" class="form-label">Email</label>
-                <input type="email" class="form-control" id="email" placeholder="Enter your email" required>
-            </div>
-            <div class="mb-3">
-                <label for="message" class="form-label">Message</label>
-                <textarea type="message" class="form-control" rows="4" id="message" placeholder="Enter your message" required></textarea>
-            </div>
-            <button class="btn btn-primary mt-3">Send</button>
+    <section id="contact" class="section-padding">
+        <div class="container">
+            <h2>Contact Me</h2>
+            <form action="https://formspree.io/f/your-form-id" method="POST">
+                <div class="row">
+                    <div class="col-12 col-md-6 mb-3">
+                        <input type="text" name="name" class="form-control" placeholder="Your Name" required>
+                    </div>
+                    <div class="col-12 col-md-6 mb-3">
+                        <input type="email" name="email" class="form-control" placeholder="Your Email" required>
+                    </div>
+                    <div class="col-12 mb-3">
+                        <textarea name="message" class="form-control" rows="5" placeholder="Your Message" required></textarea>
+                    </div>
+                    <div class="col-12 text-center">
+                        <button type="submit" class="btn btn-primary">Send Message</button>
+                    </div>
+                </div>
+            </form>
         </div>
-    </div>
+    </section>
 
     <!-- Social Links -->
-    <div class="container-fluid social-links py-3">
-        <div class="container text-center">
-            <div class="d-flex justify-content-center gap-3">
-                <a href="https://facebook.com/AccelHrnndz" data-tooltip="Facebook"><i class="bi bi-facebook"></i></a>
-                <a href="https://instagram.com/accelvivas_" data-tooltip="Instagram"><i class="bi bi-instagram"></i></a>
-                <a href="https://github.com/accelvivas" data-tooltip="GitHub"><i class="bi bi-github"></i></a>
-            </div>
-        </div>
+    <div class="social-links text-center">
+        <a href="https://facebook.com/AccelHrnndz" target="_blank" data-tooltip="Facebook"><i class="bi bi-facebook"></i></a>
+        <a href="https://instagram.com/accelvivas_" target="_blank" data-tooltip="Instagram"><i class="bi bi-instagram"></i></a>
+        <a href="https://github.com/accelvivas" target="_blank" data-tooltip="GitHub"><i class="bi bi-github"></i></a>
     </div>
 
     <!-- Footer -->
-    <footer class="text-white text-center">
+    <footer class="text-center">
         <p>© 2025 <a href="#">Gian Accel V. Hernandez</a>. Crafted with <i class="bi bi-heart-fill"></i> and Code.</p>
         <p class="bible-verse">"When you pass through deep waters, I will be with you. When you go through fire, you won’t be burned." — Isaiah 43:2</p>
     </footer>
 
     <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 </body>
 </html>
