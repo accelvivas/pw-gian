@@ -54,9 +54,8 @@
             text-align: center;
         }
         .navbar-toggler-icon {
-        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255,255,255, 1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+            background-image: url("data:image/svg+xml,%3c(svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255,255,255, 1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
         }
-
 
         /* Hero Section */
         .hero-section {
@@ -219,9 +218,10 @@
             padding: 0;
             display: flex;
             flex-wrap: wrap;
-            gap: 0.75rem;
+            gap: 1.5rem;
+            justify-content: flex-start;
         }
-        .skills-list li, .hobbies-list li, .achievements-list li {
+        .achievements-list li {
             background: var(--primary);
             color: #fff;
             padding: 0.5rem 1.2rem;
@@ -229,18 +229,81 @@
             font-size: 0.9rem;
             transition: background 0.3s, transform 0.3s;
         }
-        .skills-list li:hover, .hobbies-list li:hover, .achievements-list li:hover {
+        .achievements-list li:hover {
             background: var(--accent);
             transform: translateY(-2px);
         }
 
-        /* Games List Styling */
-        .games-list {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1.5rem;
-            justify-content: flex-start; /* Changed to align left */
+        /* Skills and Hobbies List Styling */
+        .skills-list li, .hobbies-list li {
+            position: relative;
+            width: 150px;
+            height: 150px;
+            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s, box-shadow 0.3s;
         }
+        .skills-list li:hover {
+            transform: scale(1.1) rotate(3deg);
+            box-shadow: 0 8px 20px rgba(107, 33, 168, 0.6);
+        }
+        .hobbies-list li:hover {
+            transform: scale(1.1) rotate(-3deg);
+            box-shadow: 0 8px 20px rgba(107, 33, 168, 0.6);
+        }
+        .skills-list img, .hobbies-list img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: filter 0.3s;
+        }
+        .skills-list li:hover img, .hobbies-list li:hover img {
+            filter: brightness(0.7);
+        }
+        .skills-list .overlay, .hobbies-list .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(107, 33, 168, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        .skills-list li:hover .overlay, .hobbies-list li:hover .overlay {
+            opacity: 1;
+        }
+        .skills-list .overlay span, .hobbies-list .overlay span {
+            color: #fff;
+            font-size: 1rem;
+            font-weight: 600;
+            text-align: center;
+            text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+        }
+        .skills-list li::after, .hobbies-list li::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.5s, height 0.5s;
+            pointer-events: none;
+        }
+        .skills-list li:hover::after, .hobbies-list li:hover::after {
+            width: 200px;
+            height: 200px;
+            opacity: 0;
+        }
+
+        /* Games List Styling */
         .games-list li {
             position: relative;
             width: 150px;
@@ -310,7 +373,7 @@
             display: flex;
             flex-wrap: wrap;
             gap: 1.5rem;
-            justify-content: flex-start; /* Changed to align left */
+            justify-content: flex-start;
         }
         .certifications-list li {
             position: relative;
@@ -701,11 +764,15 @@
                 height: 28px;
                 font-size: 1.1rem;
             }
-            .games-list li, .certifications-list li {
+            .skills-list li, .hobbies-list li, .games-list li {
                 width: 120px;
                 height: 120px;
             }
-            .games-list .overlay span, .certifications-list .overlay span {
+            .certifications-list li {
+                width: 160px;
+                height: 120px;
+            }
+            .skills-list .overlay span, .hobbies-list .overlay span, .games-list .overlay span, .certifications-list .overlay span {
                 font-size: 0.8rem;
             }
         }
@@ -855,32 +922,65 @@
                 <div class="col-12 mb-3">
                     <h4>Programming</h4>
                     <ul class="skills-list">
-                        <li>Java</li>
-                        <li>SQL</li>
-                        <li>C++</li>
+                        <li>
+                            <img src="https://logos-world.net/wp-content/uploads/2022/07/Java-Logo.png" alt="Java">
+                            <div class="overlay"><span>Java</span></div>
+                        </li>
+                        <li>
+                            <img src="https://optim.tildacdn.one/tild6238-3035-4335-a333-306335373139/-/resize/824x/-/format/webp/IMG_3349.jpg.webp" alt="SQL">
+                            <div class="overlay"><span>SQL</span></div>
+                        </li>
+                        <li>
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/ISO_C%2B%2B_Logo.svg/1200px-ISO_C%2B%2B_Logo.svg.png" alt="C++">
+                            <div class="overlay"><span>C++</span></div>
+                        </li>
                     </ul>
                 </div>
                 <div class="col-12 mb-3">
                     <h4>Web Development</h4>
                     <ul class="skills-list">
-                        <li>HTML</li>
-                        <li>CSS</li>
-                        <li>Bootstrap</li>
+                        <li>
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/HTML5_logo_and_wordmark.svg/800px-HTML5_logo_and_wordmark.svg.png" alt="HTML">
+                            <div class="overlay"><span>HTML</span></div>
+                        </li>
+                        <li>
+                            <img src="https://images.tpointtech.com/csspages/images/css-tutorial.png" alt="CSS">
+                            <div class="overlay"><span>CSS</span></div>
+                        </li>
+                        <li>
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Bootstrap_logo.svg/1200px-Bootstrap_logo.svg.png" alt="Bootstrap">
+                            <div class="overlay"><span>Bootstrap</span></div>
+                        </li>
                     </ul>
                 </div>
                 <div class="col-12 mb-3">
                     <h4>Tools</h4>
                     <ul class="skills-list">
-                        <li>VS Code</li>
-                        <li>GitHub</li>
-                        <li>Canva</li>
+                        <li>
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZ6NCxPLGi_MIQmnA7DwXINCdm5vHiGUkygA&s" alt="VS Code">
+                            <div class="overlay"><span>VS Code</span></div>
+                        </li>
+                        <li>
+                            <img src="https://avatars1.githubusercontent.com/u/9919?v=4" alt="GitHub">
+                            <div class="overlay"><span>GitHub</span></div>
+                        </li>
+                        <li>
+                            <img src="https://images-eds-ssl.xboxlive.com/image?url=4rt9.lXDC4H_93laV1_eHHFT949fUipzkiFOBH3fAiZZUCdYojwUyX2aTonS1aIwMrx6NUIsHfUHSLzjGJFxxo4K81Ei7WzcnqEk8W.MgwadpHjl76SlQnWKc4OkaILTy7aDmpraBC2vB.Q_eb6EavJPyLEBEEqc.BSkZzu5Vng-&format=source" alt="Canva">
+                            <div class="overlay"><span>Canva</span></div>
+                        </li>
                     </ul>
                 </div>
                 <div class="col-12 mb-3">
                     <h4>Hobbies</h4>
                     <ul class="hobbies-list">
-                        <li>Guitar</li>
-                        <li>Basketball</li>
+                        <li>
+                            <img src="https://cdn.ustatik.com/storage/marketing/images/d/dbe1cf59ae7fdf9dab827e754b895ce83c031737.png@380" alt="Guitar">
+                            <div class="overlay"><span>Guitar</span></div>
+                        </li>
+                        <li>
+                            <img src="https://www.rockstaracademy.com/lib/images/news/basketball.jpeg" alt="Basketball">
+                            <div class="overlay"><span>Basketball</span></div>
+                        </li>
                     </ul>
                 </div>
                 <div class="col-12">
