@@ -217,7 +217,7 @@
             flex-wrap: wrap;
             gap: 0.75rem;
         }
-        .skills-list li, .hobbies-list li, .games-list li, .certifications-list li, .achievements-list li {
+        .skills-list li, .hobbies-list li, .achievements-list li {
             background: var(--primary);
             color: #fff;
             padding: 0.5rem 1.2rem;
@@ -225,9 +225,151 @@
             font-size: 0.9rem;
             transition: background 0.3s, transform 0.3s;
         }
-        .skills-list li:hover, .hobbies-list li:hover, .games-list li:hover, .certifications-list li:hover, .achievements-list li:hover {
+        .skills-list li:hover, .hobbies-list li:hover, .achievements-list li:hover {
             background: var(--accent);
             transform: translateY(-2px);
+        }
+
+        /* Games List Styling */
+        .games-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            justify-content: flex-start; /* Changed to align left */
+        }
+        .games-list li {
+            position: relative;
+            width: 150px;
+            height: 150px;
+            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .games-list li:hover {
+            transform: scale(1.1) rotate(3deg);
+            box-shadow: 0 8px 20px rgba(107, 33, 168, 0.6);
+        }
+        .games-list img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: filter 0.3s;
+        }
+        .games-list li:hover img {
+            filter: brightness(0.7);
+        }
+        .games-list .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(107, 33, 168, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        .games-list li:hover .overlay {
+            opacity: 1;
+        }
+        .games-list .overlay span {
+            color: #fff;
+            font-size: 1rem;
+            font-weight: 600;
+            text-align: center;
+            text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+        }
+        .games-list li::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.5s, height 0.5s;
+            pointer-events: none;
+        }
+        .games-list li:hover::after {
+            width: 200px;
+            height: 200px;
+            opacity: 0;
+        }
+
+        /* Certifications List Styling */
+        .certifications-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            justify-content: flex-start; /* Changed to align left */
+        }
+        .certifications-list li {
+            position: relative;
+            width: 200px;
+            height: 150px;
+            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .certifications-list li:hover {
+            transform: scale(1.1) rotate(-3deg);
+            box-shadow: 0 8px 20px rgba(107, 33, 168, 0.6);
+        }
+        .certifications-list img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: filter 0.3s;
+        }
+        .certifications-list li:hover img {
+            filter: brightness(0.7);
+        }
+        .certifications-list .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(107, 33, 168, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        .certifications-list li:hover .overlay {
+            opacity: 1;
+        }
+        .certifications-list .overlay span {
+            color: #fff;
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-align: center;
+            text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+        }
+        .certifications-list li::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.5s, height 0.5s;
+            pointer-events: none;
+        }
+        .certifications-list li:hover::after {
+            width: 250px;
+            height: 250px;
+            opacity: 0;
         }
 
         /* Journey Section */
@@ -555,6 +697,13 @@
                 height: 28px;
                 font-size: 1.1rem;
             }
+            .games-list li, .certifications-list li {
+                width: 120px;
+                height: 120px;
+            }
+            .games-list .overlay span, .certifications-list .overlay span {
+                font-size: 0.8rem;
+            }
         }
     </style>
 </head>
@@ -694,7 +843,7 @@
         </div>
     </section>
 
-    <!-- Skills -->
+    <!-- Skills & Interests -->
     <section id="skills" class="section-padding">
         <div class="container">
             <h2>Skills & Interests</h2>
@@ -733,8 +882,14 @@
                 <div class="col-12">
                     <h4>Favorite Games</h4>
                     <ul class="games-list">
-                        <li>Mobile Legends</li>
-                        <li>Roblox</li>
+                        <li>
+                            <img src="https://www.pockettactics.com/wp-content/sites/pockettactics/2025/01/mobile-legends-codes.jpg" alt="Mobile Legends">
+                            <div class="overlay"><span>Mobile Legends</span></div>
+                        </li>
+                        <li>
+                            <img src="https://images.rbxcdn.com/d66ae37d46e00a1ecacfe9531986690a.jpg" alt="Roblox">
+                            <div class="overlay"><span>Roblox</span></div>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -749,7 +904,10 @@
                 <div class="col-12 mb-3">
                     <h4>Certifications</h4>
                     <ul class="certifications-list">
-                        <li>IC3 Digital Literacy Certification</li>
+                        <li>
+                            <img src="https://images.credly.com/images/ea6af0e3-ab84-4ba4-a48c-2d4cad3f64c6/twitter_thumb_201604_IC3_GS5_Digital_Literacy-01.png" alt="IC3 Digital Literacy">
+                            <div class="overlay"><span>IC3 Digital Literacy</span></div>
+                        </li>
                     </ul>
                 </div>
                 <div class="col-12">
