@@ -30,35 +30,138 @@
             line-height: 1.6;
         }
 
-        /* Navbar */
-        .navbar {
-            background: rgba(10, 10, 10, 0.95);
-            padding: 0.75rem 1rem;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            backdrop-filter: blur(5px);
-        }
-        .navbar-brand, .nav-link {
-            color: #fff !important;
-            font-size: 1rem;
-            font-weight: 400;
-            transition: color 0.3s, transform 0.2s;
-        }
-        .nav-link:hover {
-            color: var(--primary) !important;
-            transform: translateY(-2px);
-        }
-        .navbar-toggler {
-            border: none;
-        }
-        .navbar-nav {
-            gap: 1rem;
-            text-align: center;
-        }
-        .navbar-toggler-icon {
-            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255,255,255, 1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
-        }
+/* Navbar */
+.navbar {
+    background: linear-gradient(145deg, rgba(10, 10, 10, 0.95), rgba(107, 33, 168, 0.1));
+    padding: 0.75rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    backdrop-filter: blur(5px);
+    border-bottom: 1px solid var(--primary);
+    box-shadow: 0 4px 15px rgba(107, 33, 168, 0.2);
+    transition: box-shadow 0.3s, transform 0.3s;
+}
+.navbar:hover {
+    box-shadow: 0 6px 20px rgba(107, 33, 168, 0.3);
+    transform: translateY(-2px);
+}
+.navbar-brand {
+    color: #fff !important;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    padding: 0.5rem 1rem;
+    position: relative;
+    transition: color 0.3s, transform 0.3s, text-shadow 0.3s;
+}
+.navbar-brand:hover {
+    color: var(--accent) !important;
+    transform: scale(1.03);
+    text-shadow: 0 0 8px rgba(168, 85, 247, 0.5);
+}
+.navbar-brand::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 1rem;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--primary), var(--accent));
+    transition: width 0.3s ease-in-out;
+}
+.navbar-brand:hover::after {
+    width: calc(100% - 2rem);
+}
+.nav-link {
+    color: #fff !important;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 400;
+    padding: 0.5rem 1rem;
+    position: relative;
+    transition: color 0.3s, transform 0.3s, text-shadow 0.3s;
+}
+.nav-link:hover {
+    color: var(--accent) !important;
+    transform: translateY(-2px);
+    text-shadow: 0 0 6px rgba(168, 85, 247, 0.4);
+}
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 1rem;
+    width: 0;
+    height: 2px;
+    background: var(--accent);
+    transition: width 0.3s ease-in-out;
+}
+.nav-link:hover::after {
+    width: calc(100% - 2rem);
+}
+.navbar-toggler {
+    border: none;
+    padding: 0.5rem;
+    position: relative;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+.navbar-toggler:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 8px rgba(168, 85, 247, 0.3);
+}
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(168, 85, 247, 1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+    width: 1.5em;
+    height: 1.5em;
+    transition: transform 0.3s;
+}
+.navbar-toggler:hover .navbar-toggler-icon {
+    transform: rotate(45deg);
+}
+.navbar-nav {
+    gap: 1rem;
+    text-align: center;
+}
+.navbar-collapse {
+    transition: all 0.3s ease-in-out;
+}
+.navbar-collapse.show {
+    background: linear-gradient(145deg, rgba(10, 10, 10, 0.95), rgba(107, 33, 168, 0.1));
+    border-radius: 10px;
+    padding: 1rem;
+    margin-top: 0.5rem;
+    border: 1px solid var(--primary);
+    box-shadow: 0 4px 15px rgba(107, 33, 168, 0.2);
+}
+
+/* Smooth scroll behavior */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Mobile Adjustments */
+@media (max-width: 576px) {
+    .navbar {
+        padding: 0.5rem 0;
+    }
+    .navbar-brand {
+        font-size: 1rem;
+        padding: 0.5rem 0.75rem;
+    }
+    .nav-link {
+        font-size: 0.85rem;
+        padding: 0.5rem 0.75rem;
+    }
+    .navbar-nav {
+        gap: 0.5rem;
+    }
+    .navbar-collapse.show {
+        padding: 0.75rem;
+        border-radius: 8px;
+    }
+}
 
         /* Hero Section */
         .hero-section {
@@ -82,34 +185,49 @@
             box-shadow: 0 0 30px rgba(107, 33, 168, 0.5);
             transform: translateY(-5px);
         }
+        
         .profile-img {
-            width: 300px;
-            height: 300px;
-            object-fit: cover;
-            border: 4px solid transparent;
-            border-image: linear-gradient(45deg, var(--primary), var(--accent)) 1;
-            clip-path: polygon(25% 0%, 75% 0%, 100% 25%, 100% 75%, 75% 100%, 25% 100%, 0% 75%, 0% 25%);
-            transition: transform 0.3s, box-shadow 0.3s;
-            flex-shrink: 0;
-            position: relative;
-            box-shadow: 0 0 10px rgba(107, 33, 168, 0.3);
-        }
-        .profile-img::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 320px;
-            height: 320px;
-            background: radial-gradient(circle, rgba(107, 33, 168, 0.3), transparent);
-            border-radius: 50%;
-            transform: translate(-50%, -50%);
-            z-index: -1;
-        }
-        .profile-img:hover {
-            transform: scale(1.05) rotate(5deg);
-            box-shadow: 0 0 20px rgba(107, 33, 168, 0.6);
-        }
+    width: 300px;
+    height: 300px;
+    object-fit: cover;
+    border: 4px solid transparent;
+    border-image: linear-gradient(45deg, var(--primary), var(--accent)) 1;
+    transition: transform 0.3s, box-shadow 0.3s, filter 0.3s;
+    flex-shrink: 0;
+    position: relative;
+    box-shadow: 0 0 15px rgba(107, 33, 168, 0.4);
+}
+.profile-img::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 340px;
+    height: 340px;
+    background: radial-gradient(circle, rgba(107, 33, 168, 0.3), transparent);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+}
+.profile-img:hover {
+    transform: scale(1.05) rotate(3deg);
+    box-shadow: 0 0 25px rgba(107, 33, 168, 0.7);
+    filter: brightness(1.1) contrast(1.05);
+}
+
+/* Mobile Adjustments */
+@media (max-width: 576px) {
+    .profile-img {
+        width: 200px;
+        height: 200px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(107, 33, 168, 0.3);
+    }
+    .profile-img::before {
+        width: 240px;
+        height: 240px;
+    }
+}
         .hero-content {
             text-align: left;
             flex-grow: 1;
@@ -147,6 +265,74 @@
             box-shadow: 0 5px 15px rgba(107, 33, 168, 0.5);
         }
 
+        /* Hero Social Links */
+.hero-social-links {
+    display: flex;
+    gap: 1rem;
+    justify-content: flex-start;
+    margin-top: 1.5rem;
+}
+.hero-social-links a {
+    color: #fff;
+    background: linear-gradient(90deg, var(--primary), var(--accent));
+    padding: 0.6rem;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
+}
+.hero-social-links a:hover {
+    background: linear-gradient(90deg, var(--accent), var(--primary));
+    transform: translateY(-3px) scale(1.1);
+    box-shadow: 0 4px 12px rgba(107, 33, 168, 0.5);
+}
+.hero-social-links i {
+    font-size: 1.4rem;
+}
+.hero-social-links a::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    top: -2.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--primary);
+    color: #fff;
+    padding: 0.4rem 0.8rem;
+    border-radius: 6px;
+    font-size: 0.75rem;
+    font-weight: 400;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s, visibility 0.3s;
+}
+.hero-social-links a:hover::after {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Mobile Adjustments */
+@media (max-width: 576px) {
+    .hero-social-links {
+        justify-content: center;
+        gap: 0.75rem;
+        margin-top: 1rem;
+    }
+    .hero-social-links a {
+        width: 36px;
+        height: 36px;
+        padding: 0.5rem;
+    }
+    .hero-social-links i {
+        font-size: 1.2rem;
+    }
+    .hero-social-links a::after {
+        font-size: 0.65rem;
+        top: -2rem;
+    }
+}
         /* Section Styling */
         .section-padding {
             padding: 3rem 0;
@@ -860,18 +1046,22 @@
         </div>
     </nav>
 
-    <!-- Homepage -->
-    <section class="hero-section">
-        <div class="hero-card">
-            <img src="./gian.JPG" class="profile-img" alt="Profile Image of Gian Accel V. Hernandez">
-            <div class="hero-content">
-                <h1>Hi, I’m Gian Accel V. Hernandez</h1>
-                <h3>Information Technology Student</h3>
-                <p class="lead">Aspiring Web Developer | Passionate About Tech | Always Learning</p>
-                <a href="#projects" class="btn btn-cta">View My Projects</a>
+ <!-- Homepage -->
+<section class="hero-section">
+    <div class="hero-card">
+        <img src="./gian.JPG" class="profile-img" alt="Profile Image of Gian Accel V. Hernandez">
+        <div class="hero-content">
+            <h1>Hi, I’m Gian Accel V. Hernandez</h1>
+            <h3>Information Technology Student</h3>
+            <p class="lead">Aspiring Web Developer | Passionate About Tech | Always Learning</p>
+            <div class="hero-social-links">
+                <a href="https://facebook.com/AccelHrnndz" data-tooltip="Facebook" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+                <a href="https://instagram.com/accelvivas_" data-tooltip="Instagram" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+                <a href="https://github.com/accelvivas" data-tooltip="GitHub" aria-label="GitHub"><i class="bi bi-github"></i></a>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
     <!-- About Me -->
     <section id="about" class="section-padding">
@@ -1138,17 +1328,6 @@
                 <textarea type="message" class="form-control" rows="4" id="message" placeholder="Enter your message" required></textarea>
             </div>
             <button class="btn btn-primary mt-3">Send</button>
-        </div>
-    </div>
-
-    <!-- Social Links -->
-    <div class="container-fluid social-links py-3">
-        <div class="container text-center">
-            <div class="d-flex justify-content-center gap-3">
-                <a href="https://facebook.com/AccelHrnndz" data-tooltip="Facebook"><i class="bi bi-facebook"></i></a>
-                <a href="https://instagram.com/accelvivas_" data-tooltip="Instagram"><i class="bi bi-instagram"></i></a>
-                <a href="https://github.com/accelvivas" data-tooltip="GitHub"><i class="bi bi-github"></i></a>
-            </div>
         </div>
     </div>
 
